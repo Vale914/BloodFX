@@ -23,6 +23,9 @@ class EventListener implements Listener{
         $this->plugin = $plugin;
     }
 
+    /**
+     * @param EntityDamageEvent $event
+     */
     public function onDamage(EntityDamageEvent $event) : void{
         if($event instanceof EntityDamageByEntityEvent){
             $player = $event->getEntity();
