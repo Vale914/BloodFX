@@ -1,3 +1,4 @@
+(https://poggit.pmmp.io/p/BloodFX/1.0.1) [![HitCount]
 [![](https://poggit.pmmp.io/shield.state/BloodFX)](https://poggit.pmmp.io/p/BloodFX)
 [![](https://poggit.pmmp.io/shield.dl.total/BloodFX)](https://poggit.pmmp.io/p/BloodFX)
 
