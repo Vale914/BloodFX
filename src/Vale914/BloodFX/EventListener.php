@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\level\particle\DestroyBlockParticle;
 use pocketmine\math\Vector3;
+use pocketmine\Player;
 
 class EventListener implements Listener{
 
