@@ -9,6 +9,7 @@ use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\level\particle\DestroyBlockParticle;
 use pocketmine\math\Vector3;
+use pocketmine\Player;
 
 class EventListener implements Listener{
 
@@ -29,7 +30,11 @@ class EventListener implements Listener{
     public function onDamage(EntityDamageEvent $event) : void{
         if($event instanceof EntityDamageByEntityEvent){
             $player = $event->getEntity();
-            $player->getLevel()->addParticle(new DestroyBlockParticle(new Vector3($player->x, $player->y + 1, $player->z), Block::get(Block::REDSTONE_BLOCK)));
-        }
+            if($player instanceof Player){
+                $player->getLevel()->addParticle(new DestroyBlockParticle(new Vector3($player->x, $player->y + 1, $player->z), Block::get(Block::REDSTONE_BLOCK)));
+            }
+        }else{
+		return;
+	}
     }
 }
