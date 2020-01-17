@@ -33,8 +33,6 @@ class EventListener implements Listener{
             if($player instanceof Player){
                 $player->getLevel()->addParticle(new DestroyBlockParticle(new Vector3($player->x, $player->y + 1, $player->z), Block::get(Block::REDSTONE_BLOCK)));
             }
-        }else{
-		return;
-	}
+        }
     }
 }
