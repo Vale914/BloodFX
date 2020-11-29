@@ -26,12 +26,15 @@ class EventListener implements Listener{
 
     /**
      * @param EntityDamageEvent $event
+     * @ignoreCancelled
      */
     public function onDamage(EntityDamageEvent $event) : void{
         if($event instanceof EntityDamageByEntityEvent){
             $player = $event->getEntity();
             if($player instanceof Player){
-                $player->getLevel()->addParticle(new DestroyBlockParticle(new Vector3($player->x, $player->y + 1, $player->z), Block::get(Block::REDSTONE_BLOCK)));
+                for($i = 0; $i < $this->plugin->getConfig()->get("particle-count"); $i++){
+                    $player->getLevel()->addParticle(new DestroyBlockParticle($player->add(mt_rand(-50, 50)/100, 1 + mt_rand(-50, 50)/100, mt_rand(-50, 50)/100), Block::get(Block::REDSTONE_BLOCK)));
+                }
             }
         }
     }
