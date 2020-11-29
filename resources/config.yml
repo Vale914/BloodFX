@@ -5,6 +5,12 @@
 #  | |_) | | (_) | (_) | (_| | |     / . \
 #  |____/|_|\___/ \___/ \__,_|_|    /_/ \_\
 
+# BloodFX Configuration File
 
-#Serves to change the amount of blood in-game
+# DO NOT MODIFY THE VERSION IF NOT IT MIGHT NOT WORK PROPERLY!!
+
+# Serves to change the amount of blood in-game
 particle-count: 5
+
+# This is a config version
+version: 1.0.0
