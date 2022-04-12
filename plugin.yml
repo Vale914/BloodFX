@@ -1,5 +1,5 @@
 name: BloodFX
-author: Vale914
-version: 1.0.3
-api: 3.0.0
+authors: [Vale914, Laith98Dev]
+version: 1.0.4
+api: [4.0.0]
 main: Vale914\BloodFX\Main
