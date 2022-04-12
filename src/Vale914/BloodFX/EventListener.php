@@ -1,15 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Vale914\BloodFX;
 
-use pocketmine\block\Block;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
-use pocketmine\level\particle\DestroyBlockParticle;
-use pocketmine\math\Vector3;
-use pocketmine\Player;
+use pocketmine\player\Player;
+use pocketmine\world\particle\BlockBreakParticle;
 
 class EventListener implements Listener{
 
@@ -26,14 +26,16 @@ class EventListener implements Listener{
 
     /**
      * @param EntityDamageEvent $event
-     * @ignoreCancelled
+     * @ignoreCancelled false
      */
     public function onDamage(EntityDamageEvent $event) : void{
         if($event instanceof EntityDamageByEntityEvent){
             $player = $event->getEntity();
             if($player instanceof Player){
-                for($i = 0; $i < $this->plugin->getConfig()->get("particle-count"); $i++){
-                    $player->getLevel()->addParticle(new DestroyBlockParticle($player->add(mt_rand(-50, 50)/100, 1 + mt_rand(-50, 50)/100, mt_rand(-50, 50)/100), Block::get(Block::REDSTONE_BLOCK)));
+                for($i = 0; $i < intval($this->plugin->getConfig()->get("particle-count")); $i++){
+                    $pos = $player->getPosition()->add(mt_rand(-50, 50) / 100, 1 + mt_rand(-50, 50) / 100, mt_rand(-50, 50) / 100);
+                    $particle = new BlockBreakParticle(VanillaBlocks::REDSTONE());
+                    $player->getWorld()->addParticle($pos, $particle);
                 }
             }
         }
